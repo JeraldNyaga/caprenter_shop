@@ -41,21 +41,6 @@ You can explore the database structure via this ERD:
 
 ---
 
-## 🗂️ Project Structure
-
-```bash
-caprenter_shop/
-├── cli.py                  # Main CLI logic
-├── furniture.db            # SQLite database file
-├── models/
-│   ├── base.py             # Base class for SQLAlchemy models
-│   ├── carpenter.py        # Carpenter model
-│   ├── customer.py         # Customer model
-│   ├── furniture.py        # Furniture model
-│   └── carpenter_customer.py # Relationship model (Orders)
-└── README.md               # Project documentation
-```
-
 # 📝 License
 MIT License
 
