@@ -28,7 +28,7 @@ def view_carpenters():
 
 def update_carpenter():
     cid = int(input("Enter Carpenter ID to update: "))
-    carpenter = session.query(Carpenter).get(cid)
+    carpenter = session.get(Carpenter, cid)
     if not carpenter:
         print("❌ Carpenter not found.")
         return
@@ -39,7 +39,7 @@ def update_carpenter():
 
 def delete_carpenter():
     cid = int(input("Enter Carpenter ID to delete: "))
-    carpenter = session.query(Carpenter).get(cid)
+    carpenter = session.get(Carpenter, cid)
     if carpenter:
         session.delete(carpenter)
         session.commit()
@@ -60,7 +60,7 @@ def view_customers():
 
 def update_customer():
     cid = int(input("Customer ID: "))
-    cust = session.query(Customer).get(cid)
+    cust = session.get(Customer, cid)
     if not cust:
         print("❌ Not found.")
         return
@@ -70,7 +70,7 @@ def update_customer():
 
 def delete_customer():
     cid = int(input("Customer ID: "))
-    cust = session.query(Customer).get(cid)
+    cust = session.get(Customer, cid)
     if cust:
         session.delete(cust)
         session.commit()
@@ -112,7 +112,7 @@ def view_furniture():
 
 def delete_furniture():
     fid = int(input("Furniture ID: "))
-    item = session.query(Furniture).get(fid)
+    item = session.get(Furniture, fid)
     if item:
         session.delete(item)
         session.commit()
@@ -124,7 +124,7 @@ def buy_furniture():
     cust_id = int(input("Customer ID: "))
     furn_id = int(input("Furniture ID: "))
 
-    furniture = session.query(Furniture).get(furn_id)
+    furniture = session.get(Furniture, furn_id)
     if not furniture or furniture.is_sold:
         print("❌ Not available.")
         return
@@ -141,7 +141,7 @@ def buy_furniture():
 
 def return_furniture():
     order_id = int(input("Order ID to return: "))
-    order = session.query(CarpenterCustomer).get(order_id)
+    order = session.get(CarpenterCustomer, order_id)
     if not order:
         print("❌ Order not found.")
         return
@@ -151,7 +151,7 @@ def return_furniture():
 
 def remake_furniture():
     order_id = int(input("Order ID: "))
-    order = session.query(CarpenterCustomer).get(order_id)
+    order = session.get(CarpenterCustomer, order_id)
     if not order or not order.returned:
         print("❌ Furniture must be returned first.")
         return
